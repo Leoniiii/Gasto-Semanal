@@ -6,13 +6,9 @@ const Pregunta = (props) => {
     const [cantidad, guardarCantidad ] = useState(0);
     const [error, guardarError] = useState(false);
 
-    //Leer el presupuesto
-    const definirPresupuesto=(e) => {
-        guardarCantidad(parseInt(e.target.value));        
-    };
-
+   
     //Submit para definir el presupuesto
-    const agregarPresupuesto= (e) => {
+    const agregarPresupuesto= e => {
         e.preventDefault()
 
         //Validar
@@ -22,6 +18,7 @@ const Pregunta = (props) => {
         } else {
             props.guardarPresupuesto(cantidad);
             props.guardarRestante(cantidad);
+            props.actualizarPregunta(false);
         }
     };
 
@@ -38,7 +35,7 @@ const Pregunta = (props) => {
                     type="number"
                     className="u-full-width"
                     placeholder="Coloca tu presupuesto"
-                    onChange={definirPresupuesto}
+                    onChange={e => guardarCantidad(parseInt(e.target.value, 10))}
                 />
                 <input
                     type="submit"
