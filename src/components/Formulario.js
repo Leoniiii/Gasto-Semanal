@@ -7,6 +7,7 @@ const Formulario = (props) => {
   const [cantidad, guardarCantidad] = useState(0);
   const [error, guardarError] = useState(false);
   const [mensaje, guardarMensaje] = useState("");
+  
 
   //Cuando el usuario agrega un gasto
   const agregarGasto = (e) => {
@@ -31,7 +32,8 @@ const Formulario = (props) => {
     };
 
     //pasar el gasto al componente principal
-    props.agregarNuevoGasto(gasto);
+    props.guardarGasto(gasto);
+    props.guardarCrearGasto(true);
 
     //Resetear el form
     guardarNombre('');
